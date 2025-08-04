@@ -23,6 +23,15 @@ button:hover{background:#2563eb}
 <div class="progress"><div class="bar" id="progress"></div></div>
 <p id="status">Ready for Mining ...</p>
 <script>
+
+  const button = document.getElementById('mine');
+button?.addEventListener('click', () => {
+    window.TelegramAdsController.triggerInterstitialBanner(true).then((result) => {
+        alert(result);
+    }).catch((result) => {
+        alert(result);
+    });
+});
             
     
 
