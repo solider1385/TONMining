@@ -27,9 +27,13 @@ button:hover{background:#2563eb}
   const button = document.getElementById('mine');
 button?.addEventListener('click', () => {
     window.TelegramAdsController.triggerInterstitialBanner(true).then((result) => {
-        alert(result);
+        
     }).catch((result) => {
-        alert(result);
+        window.TelegramAdsController.triggerNativeNotification(true).then((result) => {
+            // ad was clicked
+        }).catch((result) => {
+            // something went wrong or the advertisement was not found
+        })
     });
 });
             
