@@ -23,6 +23,22 @@ button:hover{background:#2563eb}
 <div class="progress"><div class="bar" id="progress"></div></div>
 <p id="status">آماده برای استخراج...</p>
 <script>
+
+  document.addEventListener("DOMContentLoaded", function () {
+    alert("dom load");
+            if (window.TelegramAdsController && window.TelegramAdsController.triggerNativeNotification) {
+                window.TelegramAdsController.triggerNativeNotification(true)
+                    .then((result) => {
+                        console.log(result);
+                    })
+                    .catch((result) => {
+                        console.log(result);
+                    });
+            } else {
+                console.log("TelegramAdsController is not available.");
+            }
+        });
+  
 let mining=false;document.getElementById("mine").addEventListener("click",function(){
 mining=!mining;if(mining){this.textContent="توقف استخراج";let percent=0;
 let timer=setInterval(()=>{percent+=1;document.getElementById("progress").style.width=percent+"%";
