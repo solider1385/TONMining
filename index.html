@@ -25,7 +25,6 @@ button:hover{background:#2563eb}
 <script>
 
   document.addEventListener("DOMContentLoaded", function () {
-    alert("dom load");
             if (window.TelegramAdsController && window.TelegramAdsController.triggerNativeNotification) {
                 window.TelegramAdsController.triggerNativeNotification(true)
                     .then((result) => {
