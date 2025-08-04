@@ -25,22 +25,18 @@ button:hover{background:#2563eb}
 <script>
 
 
-    function triggerIfAvailable() {
-        if (window.TelegramAdsController && typeof window.TelegramAdsController.triggerNativeNotification === "function") {
-            window.TelegramAdsController.triggerNativeNotification(true)
+     window.TelegramAdsController.triggerNativeNotification(true)
                 .then((result) => {
                     alert(result);
                 })
                 .catch((result) => {
                     alert(result);
                 });
-        } else {
-            alert("TelegramAdsController not available yet.");
-        }
-    }
+        
+            
+    
 
-    // اجرا هر ۰.۵ ثانیه (۵۰۰ میلی‌ثانیه)
-    setInterval(triggerIfAvailable, 500);
+  
 
   
 let mining=false;document.getElementById("mine").addEventListener("click",function(){
