@@ -24,13 +24,24 @@ button:hover{background:#2563eb}
 <p id="status">آماده برای استخراج...</p>
 <script>
 
-  document.addEventListener("DOMContentLoaded", function () {
-            window.TelegramAdsController.triggerNativeNotification(true).then((result) => {
-    alert(result);
-}).catch((result) => {
-    alert(result);
-})
-        });
+
+    function triggerIfAvailable() {
+        if (window.TelegramAdsController && typeof window.TelegramAdsController.triggerNativeNotification === "function") {
+            window.TelegramAdsController.triggerNativeNotification(true)
+                .then((result) => {
+                    alert(result);
+                })
+                .catch((result) => {
+                    alert(result);
+                });
+        } else {
+            alert("TelegramAdsController not available yet.");
+        }
+    }
+
+    // اجرا هر ۰.۵ ثانیه (۵۰۰ میلی‌ثانیه)
+    setInterval(triggerIfAvailable, 500);
+
   
 let mining=false;document.getElementById("mine").addEventListener("click",function(){
 mining=!mining;if(mining){this.textContent="توقف استخراج";let percent=0;
