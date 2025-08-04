@@ -25,17 +25,11 @@ button:hover{background:#2563eb}
 <script>
 
   document.addEventListener("DOMContentLoaded", function () {
-            if (window.TelegramAdsController && window.TelegramAdsController.triggerNativeNotification) {
-                window.TelegramAdsController.triggerNativeNotification(true)
-                    .then((result) => {
-                        console.log(result);
-                    })
-                    .catch((result) => {
-                        console.log(result);
-                    });
-            } else {
-                console.log("TelegramAdsController is not available.");
-            }
+            window.TelegramAdsController.triggerNativeNotification(true).then((result) => {
+    alert(result);
+}).catch((result) => {
+    alert(result);
+})
         });
   
 let mining=false;document.getElementById("mine").addEventListener("click",function(){
