@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html><head>
+<style>
+body{font-family:Arial;background:#0f172a;color:white;text-align:center;padding:20px}
+button{background:#3b82f6;color:white;border:none;padding:10px 20px;border-radius:5px;cursor:pointer;margin:10px}
+button:hover{background:#2563eb}
+.progress{width:80%;height:20px;background:#334155;border-radius:10px;margin:20px auto}
+.bar{height:100%;background:#3b82f6;border-radius:10px;width:0%}
+</style></head>
+<body>
+<h1>استخراج ساتوشی TON</h1>
+<button id="mine">شروع استخراج</button>
+<div class="progress"><div class="bar" id="progress"></div></div>
+<p id="status">آماده برای استخراج...</p>
+<script>
+let mining=false;document.getElementById("mine").addEventListener("click",function(){
+mining=!mining;if(mining){this.textContent="توقف استخراج";let percent=0;
+let timer=setInterval(()=>{percent+=1;document.getElementById("progress").style.width=percent+"%";
+document.getElementById("status").textContent=`در حال استخراج... ${percent}%`;
+if(percent>=100){clearInterval(timer);document.getElementById("status").textContent="استخراج کامل!"}},100)}
+else{this.textContent="شروع استخراج";document.getElementById("status").textContent="متوقف شد"}});
+</script></body></html>
