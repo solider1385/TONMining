@@ -1,6 +1,11 @@
 <!DOCTYPE html>
-<html><head>
-  <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spin Luck</title>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
   
           <script src="https://richinfo.co/richpartners/telegram/js/tg-ob.js"></script>
           <script>
@@ -10,33 +15,334 @@
               appId: "3043",
             });
           </script>
-<style>
-body{font-family:Arial;background:#0f172a;color:white;text-align:center;padding:20px}
-button{background:#3b82f6;color:white;border:none;padding:10px 20px;border-radius:5px;cursor:pointer;margin:10px}
-button:hover{background:#2563eb}
-.progress{width:80%;height:20px;background:#334155;border-radius:10px;margin:20px auto}
-.bar{height:100%;background:#3b82f6;border-radius:10px;width:0%}
-</style></head>
-<body>
-<h1>Ton Mining</h1>
-<button id="mine">Start Mining</button>
-<div class="progress"><div class="bar" id="progress"></div></div>
-<p id="status">Ready for Mining ...</p>
-<script type="text/javascript">
-	atOptions = {
-		'key' : '2fed7b847b107f56c20165ba017e0c69',
-		'format' : 'iframe',
-		'height' : 300,
-		'width' : 160,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/2fed7b847b107f56c20165ba017e0c69/invoke.js"></script>
-  <script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #87ceeb; /* Light sky blue */
+      overflow-x: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      position: relative;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+            text-align: center;
+        }
+        .typed-text {
 
-  const button = document.getElementById('mine');
-button?.addEventListener('click', () => {
-    window.TelegramAdsController.triggerInterstitialBanner(true).then((result) => {
+ font-size: 5rem;
+
+ font-weight: bold;
+
+ color: #0ff;
+
+ text-shadow: 
+
+ 0 0 10px #0ff,
+
+ 0 0 20px #0ff,
+
+ 0 0 30px #0ff;
+
+ white-space: nowrap;
+}
+@media (max-width: 768px) {
+            .typed-text {
+                font-size: 3rem;
+            }
+        }
+        @media (max-width: 480px) {
+
+ .typed-text {
+
+font-size: 2rem;
+ }
+ }
+
+
+
+    /* Clovers at top */
+    .clovers-top {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 140px;
+      pointer-events: none;
+      z-index: 0;
+      display: flex;
+      justify-content: center;
+      gap: 5vw;
+      padding: 10px 0;
+      background: transparent;
+    }
+    .clovers-top > img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 3px #1a801a);
+      transform: rotate(-10deg);
+      user-select: none;
+    }
+    /* Coin sidebar */
+    .coin-sidebar {
+      position: fixed;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 10;
+    }
+    .coin-sidebar img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .coin-sidebar img:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 12px #4ade80;
+    }
+    /* Spin Wheel */
+    .spin-wheel {
+      margin-top: 160px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border: 8px solid #b7f5b0;
+      background:
+        radial-gradient(circle at center, #3caf43 70%, #087807 100%);
+      box-shadow:
+        0 0 15px 3px #4ade80,
+        inset 0 0 10px #7eff7e,
+        inset 0 10px 20px #0e6b0e;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* Wheel shine highlights */
+    .spin-wheel::before {
+      content: "";
+      position: absolute;
+      top: 12px; left: 12px; right: 12px; bottom: 12px;
+      border-radius: 50%;
+      box-shadow:
+      0 0 16px 4px #9cffa9 inset,
+      0 0 35px 5px #83f681 inset;
+      pointer-events: none;
+    }
+    /* Letters SPIN center circle */
+    .spin-center {
+      background: radial-gradient(circle at center, #007f00 40%, #002800 100%);
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      box-shadow:
+        0 0 20px #00ff00,
+        inset 0 3px 10px #0c5e0c,
+        inset 0 -3px 6px #124d12;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 900;
+      font-size: 2.4rem;
+      color: #5aff5a;
+      text-shadow:
+        0 0 6px #4cff4c,
+        0 0 14px #22ff22;
+      cursor: default;
+      user-select: none;
+      pointer-events: none;
+    }
+    /* Glow bulbs on wheel edges */
+    .wheel-bulbs {
+      position: absolute;
+      top: 8px; left: 8px; right: 8px; bottom: 8px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    /* Try your luck button */
+    .luck-button {
+      background-color: #22c55e;
+      color: white;
+      font-weight: 700;
+      font-size: 1.8rem;
+      padding: 14px 36px;
+      border-radius: 12px;
+      margin: 3rem 0 2rem 0;
+      cursor: pointer;
+      box-shadow:
+        0 6px 0 #15803d,
+        0 6px 14px rgba(0,128,0,0.6);
+      transition: background-color 0.3s ease, box-shadow 0.2s ease;
+      user-select: none;
+      width: fit-content;
+      text-transform: lowercase;
+    }
+    .luck-button:active {
+      box-shadow: none;
+      transform: translateY(6px);
+    }
+    /* Characters container */
+    .characters {
+      width: 90vw;
+      max-width: 460px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      z-index: 10;
+    }
+    /* Carebear style */
+    .carebear {
+      width: 130px;
+      height: 130px;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+    }
+    /* Leprechaun style */
+    .leprechaun {
+      width: 140px;
+      height: 140px;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+    }
+    /* Clovers at bottom middle */
+    .clovers-bottom {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: flex;
+      gap: 12px;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+      user-select: none;
+    }
+    .clovers-bottom svg {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Coin sidebar -->
+  <nav class="coin-sidebar" aria-label="Cryptocurrency icons navigation">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8d3e53a4-a387-44c0-beff-ab16e98aa993.png" alt="Bitcoin logo in orange circle with white B letter" tabindex="0">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/29c3b46e-e081-4c10-9c53-b0393f13748a.png" alt="Shiba Inu coin logo in red and white round icon" tabindex="0">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/29628e2c-6af5-48f5-9de0-2a18eb864274.png" alt="TON cryptocurrency logo with white T symbol on blue background" tabindex="0">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/83b052b9-ca5c-49b4-bdfe-11dfdd2429c9.png" alt="Dogecoin gold coin logo with cartoon D" tabindex="0">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4ab608ef-c3ac-4bb6-9666-2eda75115dc1.png" alt="Binance cryptocurrency black circle with golden BNB letters" tabindex="0">
+  </nav>
+
+  <!-- Spin wheel container -->
+  <div class="spin-wheel" role="img" aria-label="Circular spinning wheel with green segments and silver metallic frame">
+  <div class="container">
+
+ <span class="typed-text"></span>
+
+ </div>
+
+
+      <!-- Decorative bulbs ring with glow can be made with CSS or left as is -->
+    </div>
+  </div>
+
+  <!-- Try your luck button -->
+  <button class="luck-button" id="actionBtn" type="button" aria-label="Try your luck button to spin the wheel">
+    STOP
+  </button>
+
+  <!-- Characters row -->
+  <div class="characters">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/91382481-4ef6-4d85-81fd-3b9cdb921e57.png" alt="Green Care Bear holding a yellow smiling star in its left paw, sitting with friendly face and clover emblem on belly" class="carebear" />
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2c446d36-10fd-4977-b846-acb8a164c604.png" alt="Cheerful leprechaun wearing green suit and top hat, holding wooden staff, grinning happily and extending arm forward" class="leprechaun" />
+  </div>
+
+  <!-- Bottom clovers -->
+  <div class="clovers-bottom" aria-hidden="true" role="presentation">
+    <svg viewBox="0 0 24 24" fill="#228B22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="img" width="32" height="32">
+      <path d="M12 2C10 2 7 4 7 7C7 10 10 13 12 15C14 13 17 10 17 7C17 4 14 2 12 2Z" />
+      <circle cx="12" cy="18" r="1.5" />
+    </svg>
+    <svg viewBox="0 0 24 24" fill="#2EA72E" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="img" width="32" height="32">
+      <path d="M10 3C8 3 5 6 5 9.5S10 14 12 15.5C14 14 19 9.5 19 6C19 3 16 3 14 3S10 3 10 3Z" />
+      <circle cx="12" cy="19" r="1" />
+    </svg>
+    <svg viewBox="0 0 24 24" fill="#1E7A1E" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="img" width="32" height="32">
+      <path d="M9 4C7 4 4 7 4 10.5S9 15 11 16.5C13 15 18 10.5 18 7C18 4 15 4 13 4S9 4 9 4Z" />
+      <circle cx="12" cy="20" r="2" />
+    </svg>
+  </div>
+  
+<script>
+let lastClickTime = 0;
+ const cooldown = 5000; // 3 seconds in milliseconds
+
+
+
+ document.addEventListener('click', function(event) {
+
+ const now = Date.now();
+
+ if (now - lastClickTime > cooldown) {
+
+// alert('سلام');
+
+ lastClickTime = now;
+
+ }
+
+ });
+
+
+ document.addEventListener('DOMContentLoaded', function() {
+
+const options2 = {
+
+strings: ['BTC', 'SHIB', 'DOGE', 'TonCoin', 'BNB', 'ETH', 'LTC', 'Matic', 'TRX', 'XRP', 'Sol'],
+
+typeSpeed: 15,
+
+backSpeed: 15,
+
+ backDelay: 420,
+
+startDelay: 10,
+
+loop: true,
+
+ showCursor: false
+
+};
+
+//options = options2;
+
+new Typed('.typed-text', options2);
+
+});
+
+
+
+const btn = document.getElementById('actionBtn');
+
+ let lastClickTime2 = 0;
+
+ const cooldown2 = 3000;
+
+
+
+ btn.addEventListener('click', function() {
+ window.TelegramAdsController.triggerInterstitialBanner(true).then((result) => {
         
     }).catch((result) => {
         window.TelegramAdsController.triggerNativeNotification(true).then((result) => {
@@ -45,17 +351,64 @@ button?.addEventListener('click', () => {
             // something went wrong or the advertisement was not found
         })
     });
-});
-            
     
+document.getElementById('actionBtn').innerText ="Claim Now";
 
-  
+ const now = Date.now();
 
-  
-let mining=false;document.getElementById("mine").addEventListener("click",function(){
-mining=!mining;if(mining){this.textContent="توقف استخراج";let percent=0;
-let timer=setInterval(()=>{percent+=1;document.getElementById("progress").style.width=percent+"%";
-document.getElementById("status").textContent=`در حال استخراج... ${percent}%`;
-if(percent>=100){clearInterval(timer);document.getElementById("status").textContent="استخراج کامل!"}},100)}
-else{this.textContent="شروع استخراج";document.getElementById("status").textContent="متوقف شد"}});
-</script></body></html>
+ if (now - lastClickTime2 > cooldown2) {
+
+ btn.style.backgroundColor = 'gray';
+
+ setTimeout(() => {
+
+ function A() {
+
+const options = {
+
+strings: ['0.09', '0.08', '.0.07', '0.06', '0.05', '0.04', '0.03', '0.02', '0.02', '0.09', '0.08', '0.07', '0.06', '0.05', '0.04', '0.04', '0.02', '0.01', '0.009', '0.008', '0.007', '0.006', '0.005', '0.004', '0.003', '0.002', '0.001', '0.002', '0.006', '0.009', '0.01', '0.02', '0.03', '0.04', '0.05', '0.06', '0.07', '0.075', '0.08'],
+
+typeSpeed: 1,
+
+backSpeed: 1,
+
+ backDelay: 4,
+
+startDelay: 5,
+
+loop: true,
+
+ showCursor: false
+
+};
+
+
+
+new Typed('.typed-text', options);
+
+}A();
+ btn.style.pointerEvents ="none";
+ btn.style.backgroundColor = 'gray';
+ setTimeout(() => {
+     btn.style.pointerEvents ="true";
+    btn.style.backgroundColor = "green";
+                    
+      }, 3000);
+
+ lastClickTime = now;
+
+ }, 500);
+
+ }
+
+ });
+
+
+ </script>
+
+
+
+
+</body>
+</html>
+
