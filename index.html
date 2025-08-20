@@ -6,6 +6,8 @@
   <title>Spin Luck</title>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
+
+  <script src='//libtl.com/sdk.js' data-zone='9681142' data-sdk='show_9681142'></script>
   
           <script src="https://richinfo.co/richpartners/telegram/js/tg-ob.js"></script>
           <script>
@@ -342,6 +344,18 @@ const btn = document.getElementById('actionBtn');
 
 
  btn.addEventListener('click', function() {
+   
+
+// Rewarded interstitial
+
+show_9681142().then(() => {
+    // You need to add your user reward function here, which will be executed after the user watches the ad.
+    // For more details, please refer to the detailed instructions.
+    alert('You have seen an ad!');
+})
+
+
+   
  window.TelegramAdsController.triggerInterstitialBanner(true).then((result) => {
         
     }).catch((result) => {
