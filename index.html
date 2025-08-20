@@ -263,9 +263,7 @@ font-size: 2rem;
   <button class="luck-button" id="actionBtn" type="button" aria-label="Try your luck button to spin the wheel">
     STOP
   </button>
-  <button class="luck-button" id="actionBtn2" type="button" aria-label="popunder">
-    popunder ads
-  </button>
+  
 
   <!-- Characters row -->
   <div class="characters">
@@ -343,43 +341,24 @@ const btn = document.getElementById('actionBtn');
  let lastClickTime2 = 0;
 
  const cooldown2 = 3000;
-const btn2 = document.getElementById('actionBtn2');
-  btn2.addEventListener('click', function() {
-    
 
+ btn.addEventListener('click', function() {
+   
 
 
 // Rewarded Popup
 
 show_9681142('pop').then(() => {
-  alert("popunder ads Ok")
+  alert("ads ok");
     // user watch ad till the end or close it in interstitial format
     // your code to reward user for rewarded format
 }).catch(e => {
-  alert("popunder ads Cant show")
+  alert("ads cant");
     // user get error during playing ad
     // do nothing or whatever you want
 })
 
         
-
-
-
-        
-  }
-   
-
-
- btn.addEventListener('click', function() {
-   
-
-// Rewarded interstitial
-
-show_9681142().then(() => {
-    // You need to add your user reward function here, which will be executed after the user watches the ad.
-    // For more details, please refer to the detailed instructions.
-    alert('You have seen an ad!');
-})
 
 
    
